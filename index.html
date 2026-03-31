@@ -1,136 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonathan Cinnamon - Personal Website</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-        
-        header {
-            background-color: #f8f9fa;
-            padding: 1rem 0;
-            text-align: center;
-            border-bottom: 1px solid #e9ecef;
-         }
-        
-        .header-img {
-            width: 800px;
-            height: 200px;
-            border-radius: 25%;
-            margin-bottom: 1rem;
-        }
-        
-        section {
-            margin: 1rem 0;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            color: #555;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: #f8f9fa;
-            border-color: #aaa;
-        }
-        
-        
-        .tool-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .tool-links a {
-            color: #555;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .tool-links a:hover {
-            background-color: #f8f9fa;
-            border-color: #aaa;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonathan Cinnamon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary:       #2c5f7a;
+      --primary-dark:  #1e4260;
+      --accent:        #1a9080;
+      --accent-light:  #e6f4f1;
+      --text:          #2d3748;
+      --text-muted:    #64748b;
+      --bg:            #fafafa;
+      --bg-alt:        #f0f5f8;
+      --border:        #dde8ed;
+      --white:         #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-name {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.015em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      display: block;
+    }
+
+    /* ── HEADER CARD ── */
+    .header-card {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 2rem 1.75rem;
+    }
+
+    .header-card-inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .header-card h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--primary-dark);
+      margin: 0 0 0.3rem 0;
+    }
+
+    .header-card .subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin: 0 0 1.25rem 0;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .social-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.35rem 0.9rem;
+      border: 1.5px solid var(--primary);
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 3rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-alt {
+      background: var(--bg-alt);
+    }
+
+    .section-inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    h2.section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 1.75rem 0;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin: 0 0 0.5rem 0;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+
+    p {
+      margin: 0 0 1rem 0;
+    }
+
+    a.inline-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── BIO ── */
+    #about p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      max-width: 720px;
+    }
+
+    /* ── RESEARCH PROJECTS ── */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .project-item {
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-item p {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pub-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      line-height: 1.5;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .pub-year {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    .pub-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .pub-title a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .pub-meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .scholar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1.5px solid var(--accent);
+      padding: 0.45rem 1.1rem;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .scholar-link:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    /* ── TEACHING ── */
+    .course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .course-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.875rem 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .course-code {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+      min-width: 82px;
+    }
+
+    .course-name {
+      font-size: 0.9375rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* ── TOOLS ── */
+    .tools-intro {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+      max-width: 560px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.125rem;
+    }
+
+    .tool-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.375rem 1.375rem 1.125rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .tool-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 18px rgba(26, 144, 128, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .tool-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--accent-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    .tool-card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .tool-card p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+      flex: 1;
+    }
+
+    .tool-arrow {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.55);
+      padding: 2rem 2rem;
+      text-align: center;
+      font-size: 0.8125rem;
+      line-height: 2;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links {
+        gap: 0.9rem;
+      }
+
+      .hero {
+        height: 150px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .course-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-links {
+        display: none;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-       <img src="https://i.postimg.cc/prdMkvt7/panorama-blur.jpg" alt="image" class="header-img">
-        <h1>Jonathan Cinnamon</h1>
-        <p>Associate Professor | Geography</p>
-        
-         <div class="social-links">
-            <a href="https://scholar.google.com/citations?hl=en&user=hL-_CeEAAAAJ&view_op=list_works">Google Scholar</a>
-            <a href="https://ccgs.ok.ubc.ca/about/contact/jonathan-cinnamon/">UBC website</a>
-            <a href="https://www.linkedin.com/in/jonathan-cinnamon-48096921/">LinkedIn</a>
-            <a href="mailto:jonathan.cinnamon@ubc.ca">Email</a>
-        </div>
-        <section id="Vis Geog">
-            <h3>Tools for visual geography and image analysis</h3>
-            <p></p>
-            <div class="tool-links">
-            <a href="https://jcinnamon.github.io/virtualaudit/">Virtual street audits</a>
-            <a href="https://jcinnamon.github.io/image/">Batch image color summarizer</a>
-            <a href="https://jcinnamon.github.io/hexvis/">Hexcode visualizer</a>
-        </div>
-        </section>
-    </header>
-    <div class="container">
-        <section id="about">
-                 
-            <h2>Bio</h2>
-            <p>I am an Associate Professor of Geography at the <a href="https://ok.ubc.ca/">University of British Columbia Okanagan</a>. I have an academic background in GIS and human geography, and do research on various things at the intersection of digital, data, visual, and urban. I teach across the <a href="https://ccgs.ok.ubc.ca/undergraduate/geography/">geography program</a> - digital and visual geography, cartography, and human and urban geography. I'm also co-Editor-in-Chief of the journal  <a href="https://www.sciencedirect.com/journal/digital-geography-and-society"><i>Digital Geography and Society</i></a>
-            </p>
-        </section>
-        <section id="projects">
-            <h3>Current Projects</h3>
-            <p>
-            <i><b>The Experimental Digital City</i></b> - This SSHRC-funded project explores the connections between experimental modes of urban governance and digital technology innovation through a case study of a mid-sized Canadian smart city.
-            </p>            
-           <p><i><b>Urban Platform Aesthetics</b></i> - This SSHRC-funded project examines the role of digital platforms in shaping how cities around the world look, how these platform aesthetics connect to ‘world city’ ambitions, and the attendant impact on urban inequalities. This study uses an innovative visual methods approach and a comparative urbanisms framework to examine urban platform visualities in Canada, Poland, and Turkey.
-           </p>
-            <p><i><b>Geographies of Computer Vision</b></i> - This project explores novel computational visual methods for analyzing images for their spatial and aesthetic properties.
-            </p>
-        </section>
-        
-        <section id="contact">
-           <p>- - - - - - - -</p> 
-            
-            <h6><a href="mailto:jonathan.cinnamon@ubc.ca">J Cinnamon 2025</a></h6>
-        </section>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Jonathan Cinnamon</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#tools">Tools</a></li>
+      </ul>
     </div>
-    <div class="container" style="background-image: url('https://i.postimg.cc/V6xC7jZJ/heavysmoke.jpg');">
-         <section id="footer">              
-                 
-        </section>
+  </nav>
+
+  <div class="hero">
+    <img src="https://i.postimg.cc/prdMkvt7/panorama-blur.jpg" alt="Panoramic landscape">
+  </div>
+
+  <div class="header-card">
+    <div class="header-card-inner">
+      <h1>Jonathan Cinnamon</h1>
+      <p class="subtitle">Associate Professor, Geography &nbsp;&middot;&nbsp; University of British Columbia Okanagan</p>
+      <div class="social-links">
+        <a href="https://scholar.google.com/citations?hl=en&user=hL-_CeEAAAAJ&view_op=list_works">Google Scholar</a>
+        <a href="https://ccgs.ok.ubc.ca/about/contact/jonathan-cinnamon/">UBC Profile</a>
+        <a href="https://github.com/jcinnamon">GitHub</a>
+        <a href="https://www.linkedin.com/in/jonathan-cinnamon-48096921/">LinkedIn</a>
+        <a href="mailto:jonathan.cinnamon@ubc.ca">Email</a>
+      </div>
     </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <h2 class="section-label">About</h2>
+      <p>I am an Associate Professor of Geography at the <a href="https://ok.ubc.ca/" class="inline-link">University of British Columbia Okanagan</a>. My academic background spans GIS and human geography, and my research sits at the intersection of digital, data, visual, and urban geographies.</p>
+      <p>I teach across the <a href="https://ccgs.ok.ubc.ca/undergraduate/geography/" class="inline-link">geography program</a> &mdash; courses on digital and visual geography, cartography, and human and urban geography. I am co-Editor-in-Chief of <a href="https://www.sciencedirect.com/journal/digital-geography-and-society" class="inline-link"><em>Digital Geography and Society</em></a>.</p>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section section-alt" id="research">
+    <div class="section-inner">
+      <h2 class="section-label">Research Projects</h2>
+      <div class="project-list">
+
+        <div class="project-item">
+          <span class="project-tag">SSHRC-funded</span>
+          <h3>The Experimental Digital City</h3>
+          <p>Explores the connections between experimental modes of urban governance and digital technology innovation through a case study of a mid-sized Canadian smart city.</p>
+        </div>
+
+        <div class="project-item">
+          <span class="project-tag">SSHRC-funded</span>
+          <h3>Urban Platform Aesthetics</h3>
+          <p>Examines the role of digital platforms in shaping how cities around the world look, how platform aesthetics connect to 'world city' ambitions, and the attendant impact on urban inequalities. Uses an innovative visual methods approach and comparative urbanisms framework across Canada, Poland, and Turkey.</p>
+        </div>
+
+        <div class="project-item">
+          <h3>Geographies of Computer Vision</h3>
+          <p>Explores novel computational visual methods for analyzing images for their spatial and aesthetic properties.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section" id="publications">
+    <div class="section-inner">
+      <h2 class="section-label">Selected Publications</h2>
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://onlinelibrary.wiley.com/doi/10.1111/1468-2427.70071" target="_blank" rel="noopener">Visual Negotiations of Gentrification in Toronto: Contestation, Politicization and Resistance through Urban Signage</a> <span class="pub-year">2026</span></p>
+          <p class="pub-meta">L. Jahiu, J. Cinnamon, A. Leszczynski &mdash; <em>International Journal of Urban and Regional Research</em></p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/02723638.2025.2597742" target="_blank" rel="noopener">The Last Meter Problem in Cities: Digital Platforms, Urban Signage, and the Enduring Analog</a> <span class="pub-year">2025</span></p>
+          <p class="pub-meta">A. Leszczynski, J. Cinnamon, L. Jahiu &mdash; <em>Urban Geography</em></p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://doi.org/10.1177/1525822X251409928" target="_blank" rel="noopener">360-degree Photography: A Step-by-step Method for Collecting and Analyzing Spherical Visual Data in the Social Sciences</a> <span class="pub-year">2025</span></p>
+          <p class="pub-meta">J. Cinnamon, A. Leszczynski, L. Jahiu &mdash; <em>Field Methods</em></p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://link.springer.com/article/10.1007/s10708-025-11542-y" target="_blank" rel="noopener">Place, Temporality, and Wine Identity: A Visual Analysis of Winery Website Imagery in the Okanagan Valley</a> <span class="pub-year">2025</span></p>
+          <p class="pub-meta">D. Gallina, J. Cinnamon &mdash; <em>GeoJournal</em> 90(6)</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://journals.sagepub.com/doi/10.1177/16094069251397351" target="_blank" rel="noopener">360-degree Video for Whole Scene Capture: From Immersive Realism to Immersive Holism in Place-based Research</a> <span class="pub-year">2025</span></p>
+          <p class="pub-meta">J. Cinnamon, A. Leszczynski, S. Asa, L. Jahiu &mdash; <em>International Journal of Qualitative Methods</em> 24</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://journals.sagepub.com/doi/10.1177/00420980251316773" target="_blank" rel="noopener">Docklessness, Aesthetic Governance, and the Urban 'Micromobility Mess'</a> <span class="pub-year">2025</span></p>
+          <p class="pub-meta">A. Leszczynski, J. Cinnamon, S. Asa, L. Jahiu &mdash; <em>Urban Studies</em> 62(12), 2508&ndash;2525</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://rgs-ibg.onlinelibrary.wiley.com/doi/abs/10.1111/area.12622" target="_blank" rel="noopener">Power in Numbers / Power and Numbers: Gentle Data Activism as Strategic Collaboration</a> <span class="pub-year">2025</span></p>
+          <p class="pub-meta">J. Cinnamon &mdash; <em>Area</em> 57(3)</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/02681102.2023.2298876" target="_blank" rel="noopener">Visual Imagery and the Informal City: Examining 360-degree Imaging Technologies for Informal Settlement Representation</a> <span class="pub-year">2024</span></p>
+          <p class="pub-meta">J. Cinnamon &mdash; <em>Information Technology for Development</em> 30(4), 590&ndash;607</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.degruyterbrill.com/document/doi/10.56687/9781529233551-013/html" target="_blank" rel="noopener">An Urban Data Politics of Scale: Lessons from South Africa</a> <span class="pub-year">2023</span></p>
+          <p class="pub-meta">J. Cinnamon &mdash; <em>Data Power in Action: Urban Data Politics in Times of Crisis</em>, 184&ndash;203</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0198971523001072" target="_blank" rel="noopener">360-degree Video for Virtual Place-based Research: A Review and Research Agenda</a> <span class="pub-year">2023</span></p>
+          <p class="pub-meta">J. Cinnamon, L. Jahiu &mdash; <em>Computers, Environment and Urban Systems</em> 106</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://doi.org/10.1016/j.diggeo.2023.100061" target="_blank" rel="noopener">Artificial Intelligence, Geography and Society</a> <span class="pub-year">2023</span></p>
+          <p class="pub-meta">S. Maalsen, J. Cinnamon, S. Kinsley &mdash; <em>Digital Geography and Society</em> 4</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/02723638.2022.2049096" target="_blank" rel="noopener">On Data Cultures and the Prehistories of Smart Urbanism in "Africa's Digital City"</a> <span class="pub-year">2023</span></p>
+          <p class="pub-meta">J. Cinnamon &mdash; <em>Urban Geography</em> 44(5), 850&ndash;870</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.sciencedirect.com/science/article/pii/S0197397523000139" target="_blank" rel="noopener">Spatiotemporal Development of Informal Settlements in Cape Town, 2000 to 2020: An Open Data Approach</a> <span class="pub-year">2023</span></p>
+          <p class="pub-meta">J. Cinnamon, T. Noth &mdash; <em>Habitat International</em> 133</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://link.springer.com/article/10.1007/s10708-021-10511-5" target="_blank" rel="noopener">Media Coverage and Territorial Stigmatization: An Analysis of Crime News Articles and Crime Statistics in Toronto</a> <span class="pub-year">2022</span></p>
+          <p class="pub-meta">L. Jahiu, J. Cinnamon &mdash; <em>GeoJournal</em> 87(6), 4547&ndash;4564</p>
+        </div>
+
+        <div class="pub-item">
+          <p class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/10630732.2021.1910467" target="_blank" rel="noopener">Do-it-yourself Street Views and the Urban Imaginary of Google Street View</a> <span class="pub-year">2022</span></p>
+          <p class="pub-meta">J. Cinnamon, A. Gaffney &mdash; <em>Journal of Urban Technology</em> 29(3), 95&ndash;116</p>
+        </div>
+
+      </div>
+      <a href="https://scholar.google.com/citations?hl=en&user=hL-_CeEAAAAJ&view_op=list_works&sortby=pubdate" class="scholar-link">Full publication list on Google Scholar &rarr;</a>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section class="section section-alt" id="teaching">
+    <div class="section-inner">
+      <h2 class="section-label">Teaching</h2>
+      <div class="course-list">
+
+        <div class="course-item">
+          <span class="course-code">GEOG 128</span>
+          <span class="course-name">Human Geography: Space, Place and Community</span>
+        </div>
+
+        <div class="course-item">
+          <span class="course-code">GEOG 257</span>
+          <span class="course-name">Seeing our World: An Introduction to Visual Geographies</span>
+        </div>
+
+        <div class="course-item">
+          <span class="course-code">GEOG 270</span>
+          <span class="course-name">Cartography and Mapmaking</span>
+        </div>
+
+        <div class="course-item">
+          <span class="course-code">GEOG 351</span>
+          <span class="course-name">Urban Social Geography</span>
+        </div>
+
+        <div class="course-item">
+          <span class="course-code">GEOG 427</span>
+          <span class="course-name">Digital Worlds: Space, Technology, and Society</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="section" id="tools">
+    <div class="section-inner">
+      <h2 class="section-label">Tools</h2>
+      <p class="tools-intro">Interactive web tools for visual geography and image analysis research.</p>
+      <div class="tools-grid">
+
+        <a href="https://jcinnamon.github.io/virtualaudit/" class="tool-card">
+          <div class="tool-icon">🔍</div>
+          <h3>Virtual Street Audits</h3>
+          <p>Conduct systematic audits of urban environments using Google Street View</p>
+          <span class="tool-arrow">Open tool &rarr;</span>
+        </a>
+
+        <a href="https://jcinnamon.github.io/image/" class="tool-card">
+          <div class="tool-icon">🎨</div>
+          <h3>Batch Image Color Summarizer</h3>
+          <p>Analyze and summarize dominant colors across large batches of images, built for visual methods and urban imagery research.</p>
+          <span class="tool-arrow">Open tool &rarr;</span>
+        </a>
+
+        <a href="https://jcinnamon.github.io/hexvis/" class="tool-card">
+          <div class="tool-icon">🟦</div>
+          <h3>Hexcode Visualizer</h3>
+          <p>Visualize and explore hex color codes and palettes &mdash; useful for color-based image analysis and data visualization.</p>
+          <span class="tool-arrow">Open tool &rarr;</span>
+        </a>
+
+        <a href="https://jcinnamon.github.io/colour-map/" class="tool-card">
+          <div class="tool-icon">🗺️</div>
+          <h3>Colours Map &amp; Earth Palette Generator</h3>
+          <p>Map geographic colours and generate and explore earth-toned color palettes through an interactive map interface, connecting place and color.</p>
+          <span class="tool-arrow">Open tool &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="mailto:jonathan.cinnamon@ubc.ca">jonathan.cinnamon@ubc.ca</a>
+    &nbsp;&middot;&nbsp;
+    University of British Columbia Okanagan
+    &nbsp;&middot;&nbsp;
+    <a href="https://ccgs.ok.ubc.ca/about/contact/jonathan-cinnamon/">Faculty Profile</a>
+    &nbsp;&middot;&nbsp;
+    &copy; J. Cinnamon 2025
+  </footer>
+
 </body>
 </html>
