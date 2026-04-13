@@ -471,7 +471,89 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
+    <!-- ─────────────────────────────────────────────────────────────
+     CSS — add to your existing stylesheet or inside <head>
+───────────────────────────────────────────────────────────────── -->
+<style>
+/* Tools grid — 2 × 2 layout */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+ 
+@media (max-width: 680px) {
+  .tools-grid { grid-template-columns: 1fr; }
+}
+ /* Card */
+a.tool-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #dde8ed;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+a.tool-card:hover {
+  box-shadow: 0 6px 22px rgba(44, 95, 122, 0.13);
+  transform: translateY(-2px);
+  border-color: #b0ccd8;
+}
+ 
+/* Screenshot thumbnail */
+.tool-card-thumb {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  background: #f0f5f8;
+  flex-shrink: 0;
+}
+.tool-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+a.tool-card:hover .tool-card-thumb img {
+  transform: scale(1.03);
+}
+ 
+/* Card body */
+.tool-card-body {
+  padding: 1.1rem 1.25rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.tool-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e4260;
+  margin: 0 0 0.45rem;
+  line-height: 1.3;
+}
+.tool-card-desc {
+  font-size: 0.875rem;
+  color: #6b7a8d;
+  line-height: 1.55;
+  margin: 0 0 0.9rem;
+  flex: 1;
+}
+.tool-card-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a9080;
+}
+a.tool-card:hover .tool-card-link {
+  text-decoration: underline;
+}
+</style>
 </head>
 <body>
 
@@ -669,38 +751,58 @@
       <h2 class="section-label">Tools</h2>
       <p class="tools-intro">Web tools for image analysis and visual geographies research.</p>
       <div class="tools-grid">
-
-        <a href="https://jcinnamon.github.io/urban-change-observer/" class="tool-card">
-          <div class="tool-icon">🔍</div>
-          <h3>Urban Change Observer</h3>
-          <p>Conduct systematic multi-temporal visual audits of urban change.</p>
-          <span class="tool-arrow">Open tool &rarr;</span>
-        </a>
-
-        <a href="https://jcinnamon.github.io/image-colour-analyzer/" class="tool-card">
-          <div class="tool-icon">🎨</div>
-          <h3>Batch Image Colour Analyzer</h3>
-          <p>Analyze colour properties in large image datasets.</p>
-          <span class="tool-arrow">Open tool &rarr;</span>
-        </a>
-
-        <a href="https://jcinnamon.github.io/image-colour-visualizer/" class="tool-card">
-          <div class="tool-icon">🟦</div>
-          <h3>Image Colour Visualizer</h3>
-          <p>Explore and visualize colours in large image datasets</p>
-          <span class="tool-arrow">Open tool &rarr;</span>
-        </a>
-
-        <a href="https://jcinnamon.github.io/earth-colours-mapper/" class="tool-card">
-          <div class="tool-icon">🗺️</div>
-          <h3>Earth Colours - an Interactive Map + Palette Generator</h3>
-          <p>Explore the geographies of colour and generate Earth colour palettes for mapping and graphic design.</p>
-          <span class="tool-arrow">Open tool &rarr;</span>
-        </a>
-
+  <div class="tools-grid">
+ 
+    <a class="tool-card" href="https://jcinnamon.github.io/urban-change-observer/">
+      <div class="tool-card-thumb">
+        <img src="img/urban-change-observer.jpg"
+             alt="Urban Change Observer — street-level visual audit interface">
       </div>
-    </div>
-  </section>
+      <div class="tool-card-body">
+        <h3 class="tool-card-title">Urban Change Observer</h3>
+        <p class="tool-card-desc">Conduct systematic multi-temporal visual audits of urban change.</p>
+        <span class="tool-card-link">Open tool →</span>
+      </div>
+    </a>
+ 
+    <a class="tool-card" href="https://jcinnamon.github.io/image-colour-analyzer/">
+      <div class="tool-card-thumb">
+        <img src="img/batch-image-analyser.jpg"
+             alt="Batch Image Colour Analyzer interface">
+      </div>
+      <div class="tool-card-body">
+        <h3 class="tool-card-title">Batch Image Colour Analyzer</h3>
+        <p class="tool-card-desc">Analyze colour properties in large image datasets.</p>
+        <span class="tool-card-link">Open tool →</span>
+      </div>
+    </a>
+ 
+    <a class="tool-card" href="https://jcinnamon.github.io/image-colour-visualizer/">
+      <div class="tool-card-thumb">
+        <img src="img/colour-visualizer.jpg"
+             alt="Image Colour Visualizer — interactive colour wheel">
+      </div>
+      <div class="tool-card-body">
+        <h3 class="tool-card-title">Image Colour Visualizer</h3>
+        <p class="tool-card-desc">Explore and visualize colours in large image datasets.</p>
+        <span class="tool-card-link">Open tool →</span>
+      </div>
+    </a>
+ 
+    <a class="tool-card" href="https://jcinnamon.github.io/earth-colours-mapper/">
+      <div class="tool-card-thumb">
+        <img src="img/earth-colours.jpg"
+             alt="Earth Colours — interactive geographic colour map">
+      </div>
+      <div class="tool-card-body">
+        <h3 class="tool-card-title">Earth Colours — Interactive Map + Palette Generator</h3>
+        <p class="tool-card-desc">Explore the geographies of colour and generate Earth colour palettes for mapping and graphic design.</p>
+        <span class="tool-card-link">Open tool →</span>
+      </div>
+    </a>
+ 
+  </div>
+</section>
 
   <footer>
     <a href="mailto:jonathan.cinnamon@ubc.ca">jonathan.cinnamon@ubc.ca</a>
